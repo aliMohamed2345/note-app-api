@@ -27,7 +27,7 @@ const createNote = async (req, res) => {
             return res.status(400).json({ success: false, message: `The Title Note Is Required` });
         }
 
-        const isTitleExist = await Note.findOne({ title });
+        const isTitleExist = await Note.findOne({ title, User: UserId });
         if (isTitleExist) {
             return res.status(400).json({ success: false, message: `The Title Must Be Unique` });
         }
@@ -53,7 +53,7 @@ const getNoteById = async (req, res) => {
         if (!mongoose.Types.ObjectId.isValid(noteId)) {
             return res.status(400).json({ success: false, message: 'Invalid Note ID' });
         }
-        const note = await Note.findOne({ _id: noteId })
+        const note = await Note.findOne({ _id: noteId, User: UserId })
         if (!note) {
             return res.status(404).json({ success: false, message: `Note Not Found` })
         }

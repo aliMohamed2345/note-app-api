@@ -3,7 +3,7 @@ const express = require("express");
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-
+const cors = require('cors')
 const app = express();
 
 // Routes
@@ -15,7 +15,7 @@ const { connectToDb } = require('../db');
 app.use(express.json());
 app.use(cookieParser());
 app.use(helmet());
-
+app.use(cors({ origin: "*", credentials: true }));
 // Rate Limiting
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -46,13 +46,6 @@ app.get("/", (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/notes', notesRoutes);
 
-// // Fallback 404 route
-// app.use("*", (req, res) => {
-//     res.status(404).json({
-//         success: false,
-//         message: "Route not found",
-//     });
-// });
 
 // DB Connection
 connectToDb();

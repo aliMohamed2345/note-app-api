@@ -23,6 +23,7 @@ Register a new user.
   "email": "john@example.com",
   "password": "securePassword123"
 }
+```
 Success Response:
 
 Status: 201 Created

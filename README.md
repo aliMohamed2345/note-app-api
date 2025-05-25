@@ -28,9 +28,7 @@ Success Response:
 
 Status: 201 Created
 
-json
-Copy
-Edit
+```json
 {
   "success": true,
   "message": "User registered successfully",
@@ -40,81 +38,75 @@ Edit
     "email": "john@example.com"
   }
 }
+```
 Error Response:
 
 Status: 400 Bad Request
 
-json
-Copy
-Edit
+```json
 {
   "success": false,
   "message": "Email already exists"
 }
+```
 🔐 POST /auth/sign-in
 Login a user and return a JWT token.
 
 Request Body:
 
-json
-Copy
-Edit
+```json
 {
   "email": "john@example.com",
   "password": "securePassword123"
 }
+```
 Success Response:
 
 Status: 200 OK
 
-json
-Copy
-Edit
+```json
 {
   "success": true,
   "message": "Logged in successfully",
   "token": "jwtToken"
 }
+```
 Error Response:
 
 Status: 401 Unauthorized
 
-json
-Copy
-Edit
+```json
 {
   "success": false,
   "message": "Invalid email or password"
 }
+```
 🔐 POST /auth/logout
 Logout the user by clearing the authentication token.
 
 Headers:
 
-makefile
-Copy
-Edit
+```makefile
 Authorization: Bearer jwtToken
+```
 Success Response:
 
 Status: 200 OK
 
-json
-Copy
-Edit
+```json
 {
   "success": true,
   "message": "Logged out successfully"
 }
+```
 📝 Notes Endpoints
 ⚠️ All notes endpoints require authentication using JWT.
 
 Headers Example:
 
-makefile
-Copy
-Edit
+```makefile
 Authorization: Bearer <your-jwt-token>
+```
 📄 GET /notes
 Retrieve all notes created by the authenticated user.
 
@@ -128,9 +120,7 @@ Success Response:
 
 Status: 200 OK
 
-json
-Copy
-Edit
+```json
 {
   "success": true,
   "notes": [
@@ -148,6 +138,7 @@ Edit
     }
   ]
 }
+```
 📄 GET /notes/:id
 Retrieve a single note by its ID.
 
@@ -159,9 +150,7 @@ Success Response:
 
 Status: 200 OK
 
-json
-Copy
-Edit
+```json
 {
   "success": true,
   "note": {
@@ -171,36 +160,33 @@ Edit
     "createdAt": "2025-05-25T18:59:34.000Z"
   }
 }
+```
 Error Response:
 
 Status: 404 Not Found
 
-json
-Copy
-Edit
+```json
 {
   "success": false,
   "message": "Note not found"
 }
+```
 📝 POST /notes
 Create a new note.
 
 Request Body:
 
-json
-Copy
-Edit
+```json
 {
   "title": "New Note",
   "content": "This is the content of the new note."
 }
+```
 Success Response:
 
 Status: 201 Created
 
-json
-Copy
-Edit
+```json
 {
   "success": true,
   "message": "Note created successfully",
@@ -211,17 +197,17 @@ Edit
     "createdAt": "2025-05-25T19:05:00.000Z"
   }
 }
+```
 Error Response:
 
 Status: 400 Bad Request
 
-json
-Copy
-Edit
+```json
 {
   "success": false,
   "message": "Title and content are required"
 }
+```
 ✏️ PUT /notes/:id
 Update a note by its ID.
 
@@ -231,20 +217,17 @@ id – Note ID
 
 Request Body:
 
-json
-Copy
-Edit
+```json
 {
   "title": "Updated Title",
   "content": "Updated content"
 }
+```
 Success Response:
 
 Status: 200 OK
 
-json
-Copy
-Edit
+```json
 {
   "success": true,
   "message": "Note updated successfully",
@@ -255,17 +238,17 @@ Edit
     "updatedAt": "2025-05-25T19:10:00.000Z"
   }
 }
+```
 Error Response:
 
 Status: 404 Not Found
 
-json
-Copy
-Edit
+```json
 {
   "success": false,
   "message": "Note not found"
 }
+```
 🗑️ DELETE /notes/:id
 Delete a note by its ID.
 
@@ -277,24 +260,22 @@ Success Response:
 
 Status: 200 OK
 
-json
-Copy
-Edit
+```json
 {
   "success": true,
   "message": "Note deleted successfully"
 }
+```
 Error Response:
 
 Status: 404 Not Found
 
-json
-Copy
-Edit
+```json
 {
   "success": false,
   "message": "Note not found"
 }
+```
 ⚠️ Error Codes
 Code	Description
 400	Bad Request (validation failed)

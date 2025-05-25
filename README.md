@@ -1,6 +1,7 @@
 # 📘 API Documentation
 
 ---
+##Postman Documentation Link:https://web.postman.co/workspace/93ef3755-40b8-4805-8ff0-0a8cf0be68e7/collection/42373444-8b7cf832-e32d-45ce-96a3-4afaaf43e48f?action=share&source=copy-link&creator=42373444
 
 ## 🔐 POST `/auth/sign-up`
 

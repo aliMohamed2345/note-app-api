@@ -1,21 +1,12 @@
-# 📘 Note-App API Documentation
-
-Welcome to the **Note-App API**! This backend API provides user authentication and note management features. It allows users to register, login, create, read, update, and delete notes.
-
-**Base URL:**  
-`https://note-app-api-lemon.vercel.app/api`
+# 📘 API Documentation
 
 ---
 
-## 🧾 Authentication Endpoints
+## 🔐 POST `/auth/sign-up`
 
----
+**Register a new user.**
 
-### 🔐 `POST /auth/sign-up`
-
-Register a new user.
-
-**Request Body:**
+### Request Body
 
 ```json
 {
@@ -24,9 +15,10 @@ Register a new user.
   "password": "securePassword123"
 }
 ```
-Success Response:
 
-Status: 201 Created
+### ✅ Success Response
+
+**Status:** `201 Created`
 
 ```json
 {
@@ -39,9 +31,10 @@ Status: 201 Created
   }
 }
 ```
-Error Response:
 
-Status: 400 Bad Request
+### ❌ Error Response
+
+**Status:** `400 Bad Request`
 
 ```json
 {
@@ -49,10 +42,14 @@ Status: 400 Bad Request
   "message": "Email already exists"
 }
 ```
-🔐 POST /auth/sign-in
-Login a user and return a JWT token.
 
-Request Body:
+---
+
+## 🔐 POST `/auth/sign-in`
+
+**Login a user and return a JWT token.**
+
+### Request Body
 
 ```json
 {
@@ -60,9 +57,10 @@ Request Body:
   "password": "securePassword123"
 }
 ```
-Success Response:
 
-Status: 200 OK
+### ✅ Success Response
+
+**Status:** `200 OK`
 
 ```json
 {
@@ -71,9 +69,10 @@ Status: 200 OK
   "token": "jwtToken"
 }
 ```
-Error Response:
 
-Status: 401 Unauthorized
+### ❌ Error Response
+
+**Status:** `401 Unauthorized`
 
 ```json
 {
@@ -81,17 +80,22 @@ Status: 401 Unauthorized
   "message": "Invalid email or password"
 }
 ```
-🔐 POST /auth/logout
-Logout the user by clearing the authentication token.
 
-Headers:
+---
 
-```makefile
+## 🔐 POST `/auth/logout`
+
+**Logout the user by clearing the authentication token.**
+
+### Headers
+
+```
 Authorization: Bearer jwtToken
 ```
-Success Response:
 
-Status: 200 OK
+### ✅ Success Response
+
+**Status:** `200 OK`
 
 ```json
 {
@@ -99,26 +103,33 @@ Status: 200 OK
   "message": "Logged out successfully"
 }
 ```
-📝 Notes Endpoints
+
+---
+
+## 📝 Notes Endpoints
+
 ⚠️ All notes endpoints require authentication using JWT.
 
-Headers Example:
+### Headers Example
 
-```makefile
+```
 Authorization: Bearer <your-jwt-token>
 ```
-📄 GET /notes
-Retrieve all notes created by the authenticated user.
 
-Query Parameters (optional):
+---
 
-page: Page number for pagination
+## 📄 GET `/notes`
 
-limit: Number of notes per page
+**Retrieve all notes created by the authenticated user.**
 
-Success Response:
+### Query Parameters (optional)
 
-Status: 200 OK
+- `page`: Page number for pagination
+- `limit`: Number of notes per page
+
+### ✅ Success Response
+
+**Status:** `200 OK`
 
 ```json
 {
@@ -139,16 +150,20 @@ Status: 200 OK
   ]
 }
 ```
-📄 GET /notes/:id
-Retrieve a single note by its ID.
 
-URL Parameter:
+---
 
-id – Note ID
+## 📄 GET `/notes/:id`
 
-Success Response:
+**Retrieve a single note by its ID.**
 
-Status: 200 OK
+### URL Parameter
+
+- `id` – Note ID
+
+### ✅ Success Response
+
+**Status:** `200 OK`
 
 ```json
 {
@@ -161,9 +176,10 @@ Status: 200 OK
   }
 }
 ```
-Error Response:
 
-Status: 404 Not Found
+### ❌ Error Response
+
+**Status:** `404 Not Found`
 
 ```json
 {
@@ -171,10 +187,14 @@ Status: 404 Not Found
   "message": "Note not found"
 }
 ```
-📝 POST /notes
-Create a new note.
 
-Request Body:
+---
+
+## 📝 POST `/notes`
+
+**Create a new note.**
+
+### Request Body
 
 ```json
 {
@@ -182,9 +202,10 @@ Request Body:
   "content": "This is the content of the new note."
 }
 ```
-Success Response:
 
-Status: 201 Created
+### ✅ Success Response
+
+**Status:** `201 Created`
 
 ```json
 {
@@ -198,9 +219,10 @@ Status: 201 Created
   }
 }
 ```
-Error Response:
 
-Status: 400 Bad Request
+### ❌ Error Response
+
+**Status:** `400 Bad Request`
 
 ```json
 {
@@ -208,14 +230,18 @@ Status: 400 Bad Request
   "message": "Title and content are required"
 }
 ```
-✏️ PUT /notes/:id
-Update a note by its ID.
 
-URL Parameter:
+---
 
-id – Note ID
+## ✏️ PUT `/notes/:id`
 
-Request Body:
+**Update a note by its ID.**
+
+### URL Parameter
+
+- `id` – Note ID
+
+### Request Body
 
 ```json
 {
@@ -223,9 +249,10 @@ Request Body:
   "content": "Updated content"
 }
 ```
-Success Response:
 
-Status: 200 OK
+### ✅ Success Response
+
+**Status:** `200 OK`
 
 ```json
 {
@@ -239,9 +266,10 @@ Status: 200 OK
   }
 }
 ```
-Error Response:
 
-Status: 404 Not Found
+### ❌ Error Response
+
+**Status:** `404 Not Found`
 
 ```json
 {
@@ -249,16 +277,20 @@ Status: 404 Not Found
   "message": "Note not found"
 }
 ```
-🗑️ DELETE /notes/:id
-Delete a note by its ID.
 
-URL Parameter:
+---
 
-id – Note ID
+## 🗑️ DELETE `/notes/:id`
 
-Success Response:
+**Delete a note by its ID.**
 
-Status: 200 OK
+### URL Parameter
+
+- `id` – Note ID
+
+### ✅ Success Response
+
+**Status:** `200 OK`
 
 ```json
 {
@@ -266,9 +298,10 @@ Status: 200 OK
   "message": "Note deleted successfully"
 }
 ```
-Error Response:
 
-Status: 404 Not Found
+### ❌ Error Response
+
+**Status:** `404 Not Found`
 
 ```json
 {
@@ -276,3 +309,15 @@ Status: 404 Not Found
   "message": "Note not found"
 }
 ```
+
+---
+
+## ⚠️ Error Codes
+
+| Code | Description                          |
+|------|--------------------------------------|
+| 400  | Bad Request (validation failed)      |
+| 401  | Unauthorized (invalid token)         |
+| 403  | Forbidden                            |
+| 404  | Not Found (resource missing)         |
+| 500  | Internal Server Error                |

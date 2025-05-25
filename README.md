@@ -276,10 +276,3 @@ Status: 404 Not Found
   "message": "Note not found"
 }
 ```
-⚠️ Error Codes
-Code	Description
-400	Bad Request (validation failed)
-401	Unauthorized (invalid token)
-403	Forbidden
-404	Not Found (resource missing)
-500	Internal Server Error

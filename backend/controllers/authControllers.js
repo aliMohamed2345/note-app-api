@@ -54,7 +54,7 @@ const logInController = async (req, res) => {
             sameSite: "Strict", // Prevents cross-site request forgery (CSRF)
             maxAge:  24 * 60 * 60 * 1000 // one week
         });
-        res.status(200).json({ success: true, message: `Login successful`, data: { token, id: existedUser._id, name: existedUser.username, email: existedUser.email } })
+        res.status(200).json({ success: true, message: `Login successful`, data: { id: existedUser._id, name: existedUser.username, email: existedUser.email } })
     } catch (error) {
         console.log(error)
         res.status(500).json({ success: false, message: 'Internal server error' });
